@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :components
   resources :quests
   resources :workers

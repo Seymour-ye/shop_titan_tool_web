@@ -1,0 +1,2 @@
+class FlashQuest < ApplicationRecord
+end

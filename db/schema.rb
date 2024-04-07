@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_07_070043) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_07_081147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_070043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "icon_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flash_quests", force: :cascade do |t|
+    t.integer "day_of_month"
+    t.integer "unlock_merchant_level"
+    t.string "name"
+    t.string "rewards"
+    t.string "reward_icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quests", force: :cascade do |t|
     t.string "region"
     t.string "reward_type", array: true
@@ -90,6 +109,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_070043) do
     t.integer "monster_aoe"
     t.string "barrier_type"
     t.integer "barrier_health"
+  end
+
+  create_table "recursive_events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.integer "duration"
+    t.string "recurrence"
+    t.string "icon_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "worker_levels", force: :cascade do |t|

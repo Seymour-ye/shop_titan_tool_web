@@ -1,0 +1,2 @@
+class RecursiveEvent < ApplicationRecord
+end
