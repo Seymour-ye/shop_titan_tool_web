@@ -1,2 +1,7 @@
 zh:
   flash_quest: "快闪任务"
+
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    today: "今天"

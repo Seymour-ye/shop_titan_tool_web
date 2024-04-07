@@ -1,3 +1,4 @@
+
 <div>
   <%= month_calendar events: @events do |date, events| %>
     <div>
@@ -5,7 +6,7 @@
       <% events.each do |event| %>
         <p>
           <%= image_tag event.icon_url, alt: "event.rewards" %>
-          <%= "#{event.name}#{I18n.t(event.category)}" %>
+          <%= "#{event.name} #{t(event.category)}" %>
         </p>
       <% end %>
     </div>

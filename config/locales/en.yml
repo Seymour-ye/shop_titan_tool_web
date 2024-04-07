@@ -1,2 +1,9 @@
 en:
   flash_quest: "Flash Quest"
+
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    today: "Today"
+    
+
