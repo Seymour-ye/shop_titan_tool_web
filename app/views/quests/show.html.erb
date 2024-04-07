@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @quest %>
+
+<div>
+  <%= link_to "Edit this quest", edit_quest_path(@quest) %> |
+  <%= link_to "Back to quests", quests_path %>
+
+  <%= button_to "Destroy this quest", @quest, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class WorkerLevel < ApplicationRecord
+end
