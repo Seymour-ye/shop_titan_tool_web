@@ -151,6 +151,17 @@ $ bundle add chronic_curation
 >   resources.key?('wood')
 =>  true
 ```
+3. Hash keys
+```
+>> resource = {}
+>> resource['wood'] = 3
+>> resource
+=> {"wood"=>3}
+>> resource['iron'.to_sym] = 5
+>> resource
+=> {"wood"=>3, :iron=>5}
+```
+
 
 # Simple Calendar & Ice Cube 
 1. Simple Calendar is a gem for calendars showing events, examples could be found in `app/views/calendars/show.html.erb`
