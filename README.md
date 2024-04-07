@@ -274,7 +274,46 @@ ul {
     unicode-bidi: isolate;
 }
 ```
+# i18n
+1. Set up
+```
+$ bundle add rails-i18n
+```
+then in `config/application.rb` set
+```
+config.i18n.available_locales = [:en, :zh]
+config.i18n.default_locale = :en
+```
+2. Now files in `config/locales/` will work, translations should be stored here, if any other position is using for 
+storing language file, should add the following in `config/application.rb`
+```
+I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]       # adding 'project_root/lib/locale/*.yml'
+```
+3. Use `i18n` in views, like in `_navigation.html.erb`
+4. Local in URL: `localhost:3000/en/calendar`
+set default url options and make sure locale is updated before each action, in `controller/application.rb`:
+```
+before_action :set_locale
 
+private
+def set_locale
+  I18n.locale = params[:locale] || I18n.default_locale
+end
+def default_url_options
+    { locale: I18n.locale }
+end
+```
+and add `scope` in `config/routes.rb`, remember to deal with the special case: home page:
+```
+scope ":locale" do 
+    get '/calendar', to: 'calendar#index'
+    ...
+    resources :blueprints
+    root to: "static_pages#home", as: :localized_root
+end 
+root to: redirect("/#{I18n.locale}", status: 302)
+```
+Use `localized_root_path` instead of `root_path`.
 # TODO LIST
 - add a switch/button for language change
 - add task for import monthly events and content pass
@@ -292,3 +331,4 @@ ul {
 - add flash quests for calendar testing
 - set up i18n
 - test i18n with flash quest
+- set up i18n related configurations

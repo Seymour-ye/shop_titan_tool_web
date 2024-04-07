@@ -1,6 +1,12 @@
 zh:
   flash_quest: "快闪任务"
 
+  navigation:
+    home: "主页"
+    blueprints: "蓝图"
+    heroes: "英雄"
+    events: "活动"
+    calendar: "日历"
   simple_calendar:
     previous: "<<"
     next: ">>"
