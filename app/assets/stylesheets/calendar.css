@@ -43,6 +43,10 @@
         .date {
             text-align: right;
         }
+
+        img {
+            height: 1.5em;
+        }
     }
   
     .wday-0 {}

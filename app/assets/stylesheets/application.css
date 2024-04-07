@@ -18,3 +18,20 @@
    margin: 0;
    padding: 0;
  }
+
+ h1 {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  background-color: lightgray;
+  line-height: 4em;
+ }
+
+ p {
+  margin: 0;
+ }
+
+ .hidden {
+  display: none;
+ }
+

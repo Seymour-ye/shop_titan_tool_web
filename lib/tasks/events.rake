@@ -6,6 +6,7 @@ namespace :events do
         event_schedule.add_recurrence_rule(IceCube::Rule.from_yaml(rec_event.recurrence))
         event_schedule.occurrences(Time.zone.now + 5.years.next).each do |occurence_time|
           Event.create(name: rec_event.name, 
+                    category: rec_event.category,
                     start_time: occurence_time, 
                     end_time: occurence_time + rec_event.duration,
                     icon_url: rec_event.icon_url)
@@ -13,13 +14,15 @@ namespace :events do
       end
     end
   
-    task initialize_recur_events: :environment do 
+    task flash_quest_recur_events: :environment do 
       FlashQuest.all.each do |flashquest|
-        name = "Lv.#{flashquest.unlock_merchant_level} Flash Quest"
+        category = "flash_quest"
+        name = "Lv.#{flashquest.unlock_merchant_level}"
         start_time = 1.year.ago
         recurrence_rule = IceCube::Rule.monthly.day_of_month(flashquest.day_of_month).to_yaml
         icon_url = flashquest.reward_icon
         RecursiveEvent.create(name: name,
+                              category: category,
                               start_time: start_time,
                               duration: 1,
                               icon_url: icon_url,

@@ -164,7 +164,7 @@ $ bundle add chronic_curation
 
 
 # Simple Calendar & Ice Cube 
-1. Simple Calendar is a gem for calendars showing events, examples could be found in `app/views/calendars/show.html.erb`
+1. Simple Calendar is a gem for calendars showing events, examples could be found in `app/views/calendars/index.html.erb`
 2. Ice Cube is a gem for handling recursive events, examples could be found in `lib/tasks/events`
 3. Events duration should be set as `n+1` in case 1-day event won't showing in the occurrence day and the day after, for example:
 ```
@@ -274,3 +274,21 @@ ul {
     unicode-bidi: isolate;
 }
 ```
+
+# TODO LIST
+- add a switch/button for language change
+- add task for import monthly events and content pass
+- modify calendar to ensure new events displayed properly
+- add filter and sort_by features to `blueprint#index`
+- display correct info about each blueprint in `_blueprint`
+- display all information about each blueprint in `blueprint#show`
+
+## Done
+- draft models for data import
+- import from google spreadsheet (blueprints, ....)
+- header navigation bar
+- remove white-space above nav bar
+- add a calendar for events 
+- add flash quests for calendar testing
+- set up i18n
+- test i18n with flash quest

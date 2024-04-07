@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_081147) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
+    t.string "category"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "icon_url"
@@ -113,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_081147) do
 
   create_table "recursive_events", force: :cascade do |t|
     t.string "name"
+    t.string "category"
     t.datetime "start_time"
     t.integer "duration"
     t.string "recurrence"

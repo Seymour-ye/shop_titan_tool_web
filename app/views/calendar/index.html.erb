@@ -3,9 +3,10 @@
     <div>
       <div class="date"><%= date.day %></div>
       <% events.each do |event| %>
-        <div>
-          <%= event.name %>
-        </div>
+        <p>
+          <%= image_tag event.icon_url, alt: "event.rewards" %>
+          <%= "#{event.name}#{I18n.t(event.category)}" %>
+        </p>
       <% end %>
     </div>
   <% end %>
