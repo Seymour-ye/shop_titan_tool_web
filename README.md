@@ -179,3 +179,98 @@ If want to set the time zone globally, set the following in `config/application.
 ```
 config.time_zone = 'Central Time (US & Canada)'
 ```
+
+# Problems
+## Whitespace above Navigation bar
+### Description
+With the structure
+```
+<html>
+  <head>
+    ...
+  </head>
+  <body>
+    <%= render 'layouts/navigation' %>
+    <%= yield %>
+  </body>
+</html>
+```
+There appears white-space above the nav-bar, inside `html` but outside of `body', wasn't able to remove by
+```
+html, body {
+  margin: 0;
+  padding: 0;
+}
+```
+Same problem in Chrome and Safari.
+### Solving
+None of answers found online helped, so asked chatGPT for a CSS reset code to reset all browser defaults, deleting each tag a time to locate.
+```
+/* Reset default browser styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+```
+
+### Result
+reset `ul` margin since
+```
+/*  user agent stylesheet */
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+```

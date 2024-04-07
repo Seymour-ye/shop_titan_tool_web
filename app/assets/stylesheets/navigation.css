@@ -1,0 +1,35 @@
+nav {
+    position: sticky !important;
+    top: 0px;
+    background-color: rgb(61, 61,61);
+    width: 100%;
+    font-weight: 900;
+
+    img {
+        height: 3em;
+    }
+
+    ul {
+        display: flex;
+        height: 3em;
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            align-content: center;
+
+            &:hover {
+                background-color: rgb(125, 125, 125);
+            }
+
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
