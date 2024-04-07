@@ -103,7 +103,8 @@ xlsx.each_row do |row|
 end
 ```
 
-# Duration (ActiveSupport::Duration)
+# Duration 
+## ActiveSupport::Duration
 1. Create a new duration
 ```
 dur = ActiveSupport::Duration.build(num_of_seconds)
@@ -114,6 +115,17 @@ dur.parts           #=> A hash
 dur.parts[:hours]
 dur.parts[:minutes]
 dur.parts[:seconds]
+```
+## ChronicDuration
+1. add the gem
+```
+$ bundle add chronic_curation
+```
+2. parse the string
+```
+>> time_string = "10 mins"
+>> seconds = ChronicDuration.parse(time_string)
+=> 600
 ```
 
 # Hash Processing

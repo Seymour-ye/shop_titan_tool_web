@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_07_060828) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_07_070043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,58 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_060828) do
     t.integer "suggest_energy"
     t.integer "speedup_energy"
     t.date "released_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.integer "tier"
+    t.integer "value"
+    t.string "get_from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string "region"
+    t.string "reward_type", array: true
+    t.integer "max_party_size"
+    t.bigint "unlock_cost_gold"
+    t.integer "unlock_cost_gem"
+    t.integer "unlock_level_merchant"
+    t.string "difficulty"
+    t.string "target"
+    t.integer "min_power"
+    t.integer "quest_time"
+    t.integer "rest_time"
+    t.integer "heal_time"
+    t.jsonb "components"
+    t.integer "min_item"
+    t.integer "max_item"
+    t.integer "monster_health"
+    t.integer "monster_dmg"
+    t.integer "monster_aoe"
+    t.string "barrier_type"
+    t.integer "barrier_health"
+  end
+
+  create_table "worker_levels", force: :cascade do |t|
+    t.integer "worker_level"
+    t.integer "xp_needed"
+    t.decimal "crafting_speed_bonus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workers", force: :cascade do |t|
+    t.string "name"
+    t.string "worker_category"
+    t.string "building"
+    t.integer "unlock_merchant_level"
+    t.integer "gold_cost"
+    t.integer "gem_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

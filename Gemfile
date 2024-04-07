@@ -80,3 +80,5 @@ gem "rails-i18n", "~> 7.0"
 gem "simple_calendar", "~> 3.0"
 
 gem "ice_cube", "~> 0.16.4"
+
+gem "chronic_duration", "~> 0.10.6"
