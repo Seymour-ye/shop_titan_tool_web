@@ -1,0 +1,81 @@
+.simple-calendar {
+    padding: 5%;
+    align-items: center;
+
+    .calendar-title {
+        font-size: x-large;
+    }
+
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row;
+        position:relative;
+        height: 3em;
+
+        a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            &:hover {
+                background-color: rgb(125, 125, 125);
+            }
+        }
+    }
+
+
+    thead {
+        background-color: lightgrey;
+    }
+
+    tr {
+        border: 10 solid black;
+    }
+
+    .day {
+        height: 3cm;
+        vertical-align: text-top;
+        width: 10%;
+        color: white;
+
+        .date {
+            text-align: right;
+        }
+    }
+  
+    .wday-0 {}
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 {}
+  
+    .today {
+        font-weight: 900;
+        background-color: rgb(246, 246, 234);
+    }
+    .past {
+    }
+    .future {}
+  
+    .start-date {
+    }
+  
+    .prev-month {
+        background-color: lightgrey;
+    }
+    .next-month { 
+        background-color: lightgrey;
+    }
+    .current-month {
+        background-color: lightslategrey;
+        .date {
+            background-color: black ;
+        }
+    }
+  
+    .has-events {}
+  }

@@ -1,0 +1,10 @@
+.blueprints {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.blueprint {
+    width: 15%;
+}

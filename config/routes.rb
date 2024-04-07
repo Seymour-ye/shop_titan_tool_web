@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/calendar', to: 'calendar#index'
   get 'static_pages/home'
   resources :events
   resources :components
