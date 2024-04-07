@@ -315,6 +315,7 @@ root to: redirect("/#{I18n.locale}", status: 302)
 ```
 Use `localized_root_path` instead of `root_path`.
 # TODO LIST
+- set locale by browser preference
 - add a switch/button for language change
 - add task for import monthly events and content pass
 - modify calendar to ensure new events displayed properly
