@@ -1,12 +1,13 @@
 en:
   flash_quest: "Flash Quest"
 
-  navigation:
+  _navigation:
     home: "Home"
     blueprints: "Blueprints"
     heroes: "Heroes"
     events: "Events"
     calendar: "Calendar"
+    
   simple_calendar:
     previous: "<<"
     next: ">>"

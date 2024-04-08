@@ -296,9 +296,11 @@ set default url options and make sure locale is updated before each action, in `
 before_action :set_locale
 
 private
+
 def set_locale
   I18n.locale = params[:locale] || I18n.default_locale
 end
+
 def default_url_options
     { locale: I18n.locale }
 end
@@ -314,8 +316,40 @@ end
 root to: redirect("/#{I18n.locale}", status: 302)
 ```
 Use `localized_root_path` instead of `root_path`.
+
+5. Set locale by browser preference
+Step4 will redirect `localhost:3000` to `localhost:3000/default_locale`, if want locale set by users' preference,
+in `config/application.rb`, change:
+```
+before_action :set_locale
+
+private
+
+def set_locale
+  I18n.locale = params[:locale] || I18n.default_locale
+end
+```
+to 
+```
+around_action :switch_locale
+
+private
+
+def switch_locale(&action)
+  logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+  locale = extract_locale_from_accept_language_header
+  logger.debug "* Locale set to '#{locale}'"
+  I18n.with_locale(locale, &action)
+end
+
+def extract_locale_from_accept_language_header
+  request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+end
+```
+**Note**: keep the `default_url_options` method, otherwise routes will not work properly.
+
+
 # TODO LIST
-- set locale by browser preference
 - add a switch/button for language change
 - add task for import monthly events and content pass
 - modify calendar to ensure new events displayed properly
@@ -333,3 +367,4 @@ Use `localized_root_path` instead of `root_path`.
 - set up i18n
 - test i18n with flash quest
 - set up i18n related configurations
+- set locale by browser preference
