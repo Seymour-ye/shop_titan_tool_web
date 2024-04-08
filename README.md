@@ -291,7 +291,7 @@ I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]       # ad
 ```
 3. Use `i18n` in views, like in `_navigation.html.erb`
 4. Local in URL: `localhost:3000/en/calendar`
-set default url options and make sure locale is updated before each action, in `controller/application.rb`:
+set default url options and make sure locale is updated before each action, in `controllers/application_controller.rb`:
 ```
 before_action :set_locale
 
@@ -319,7 +319,7 @@ Use `localized_root_path` instead of `root_path`.
 
 5. Set locale by browser preference
 Step4 will redirect `localhost:3000` to `localhost:3000/default_locale`, if want locale set by users' preference,
-in `config/application.rb`, change:
+in `app/controllers/application_controller.rb`, change:
 ```
 before_action :set_locale
 
@@ -350,6 +350,7 @@ end
 
 
 # TODO LIST
+- locale set back to browser default, should keep same after set to other options
 - add a switch/button for language change
 - add task for import monthly events and content pass
 - modify calendar to ensure new events displayed properly
@@ -369,3 +370,5 @@ end
 - set up i18n related configurations
 - set locale by browser preference
 - navigation bar showing current page
+- finished Calendar translation
+- bug-fix: locale keep setting to browser default

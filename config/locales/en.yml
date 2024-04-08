@@ -9,8 +9,22 @@ en:
     calendar: "Calendar"
     
   simple_calendar:
-    previous: "<<"
-    next: ">>"
+    previous: "<<Previous"
+    next: "Next>>"
     today: "Today"
     
+  date:
+    month_names:
+      - January
+      - Feburary
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
 

@@ -9,6 +9,21 @@ zh:
     calendar: "日历"
     
   simple_calendar:
-    previous: "<<"
-    next: ">>"
+    previous: "<<上个月"
+    next: "下个月>>"
     today: "今天"
+
+  date:
+    month_names:
+      - 一月
+      - 二月
+      - 三月
+      - 四月
+      - 五月
+      - 六月
+      - 七月
+      - 八月
+      - 九月
+      - 十月
+      - 十一月
+      - 十二月
