@@ -368,3 +368,4 @@ end
 - test i18n with flash quest
 - set up i18n related configurations
 - set locale by browser preference
+- navigation bar showing current page

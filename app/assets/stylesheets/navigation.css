@@ -33,4 +33,11 @@ nav {
         text-decoration: none;
         color: white;
     }
+
+    .active {
+        background-color: slategray;
+        &:hover {
+            background-color: slategray;
+        }
+    }
 }

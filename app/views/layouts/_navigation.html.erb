@@ -5,10 +5,10 @@
             <%= image_tag "general/logo", alt: 'Game Icon' %>
             <% end %>
         </li>
-        <li><%= link_to t('navigation.home'), localized_root_path %></li>
-        <li><%= link_to t("navigation.blueprints"), blueprints_path %></li>
-        <li><%= link_to t('navigation.heroes'), "#" %></li>
-        <li><%= link_to t('navigation.events'), "#" %></li>
-        <li><%= link_to t('navigation.calendar'), calendar_path %></li>
+        <li class="<%= active_class 'static_pages' %>"><%= link_to t('navigation.home'), localized_root_path %></li>
+        <li class="<%= active_class 'blueprints' %>"><%= link_to t("navigation.blueprints"), blueprints_path %></li>
+        <li class="<%= active_class '' %>"><%= link_to t('navigation.heroes'), "#" %></li>
+        <li class="<%= active_class '' %>"><%= link_to t('navigation.events'), "#" %></li>
+        <li class="<%= active_class 'calendar' %>"><%= link_to t('navigation.calendar'), calendar_path %></li>
     </ul>
 </nav>
