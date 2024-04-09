@@ -7,6 +7,7 @@ $ rails new app_name --database=postgresql
 ```
 $ rake db:setup
 ```
+### DEBUG =====> `<% binding.b %>`
 
 # PostgreSQL
 Access the `psql console` by

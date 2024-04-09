@@ -6,7 +6,11 @@
       <% events.each do |event| %>
         <p>
           <%= image_tag event.icon_url, alt: "event.rewards" %>
-          <%= "#{event.name} #{t(event.category)}" %>
+          <% if (event.category == 'flash_quest') %>
+            <%= "#{ event.name } #{ t(event.category) }" %>
+          <% else %>
+            <%= "#{t(event.name)} #{ t(event.category ) }" %>
+          <% end %>
         </p>
       <% end %>
     </div>

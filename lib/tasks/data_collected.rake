@@ -28,15 +28,13 @@ namespace :data_collected do
     (2..@sheet.last_row).each do |i|
       @row = i 
       category = cell_val('a')
-      name = ""
       start_time = cell_val('b')
       duration = (ChronicDuration.parse(cell_val('c')) - 1.day).to_i + 1
       recurrence_rule = IceCube::Rule.daily(28).to_yaml 
       icon_url = cell_val('e')
       
 
-      RecursiveEvent.create(name: name,
-                    category: category,
+      RecursiveEvent.create(category: category,
                     start_time: start_time,
                     duration: duration,
                     icon_url: icon_url,
