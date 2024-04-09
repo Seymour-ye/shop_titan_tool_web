@@ -350,6 +350,7 @@ end
 
 
 # TODO LIST
+- filter features added but `@blueprints` not updating, need to discuss with william.
 - add a switch/button for language change
 - add task for import monthly events and content pass
 - modify calendar to ensure new events displayed properly
@@ -371,3 +372,9 @@ end
 - navigation bar showing current page
 - finished Calendar translation
 - bug-fix: locale keep setting to browser default
+- basic filter added
+
+
+## Meeting Outline
+- how filter applies to blueprints#index
+- locale switch
