@@ -1,5 +1,21 @@
 en:
+  lost_city_of_gold: "Lost City of Gold"
+  dragon_invasion: "Dragon Invasion"
+  kings_caprice: "King's Caprice"
+  tower_of_titans: "Tower of Titans"
   flash_quest: "Flash Quest"
+  content_pass: "Content Pass"
+  full_bloom_pass: "Full Bloom"  
+  year_of_dragon_pass: "Year of the Dragon"  
+  christmas_pass: "Christmas"  
+  vampire_masquerade_pass: "Vampire Masquerade"  
+  bjorn_pass: "Bjron"  
+  spacefarer_pass: "Spacefarer"  
+  year_of_the_rabbit_pass: "Year of the Rabbit"  
+  halloween2022_pass: "Halloween"  
+  year_of_the_tiger_pass: "Year of the Tiger"  
+  avatar_pass: "Avatar"  
+  cinco_de_mayo_pass: "Cinco de Mayo"
 
   _navigation:
     home: "Home"

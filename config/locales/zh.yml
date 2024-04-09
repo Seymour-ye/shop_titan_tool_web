@@ -1,5 +1,21 @@
 zh:
+  lost_city_of_gold: "失落的黄金城"
+  dragon_invasion: "飞龙压境"
+  kings_caprice: "国王的异想天开"
+  tower_of_titans: "泰坦之塔"
   flash_quest: "快闪任务"
+  content_pass: "内容令状"
+  full_bloom_pass: "春暖花开"  
+  year_of_dragon_pass: "龙年"  
+  christmas_pass: "圣诞"  
+  vampire_masquerade_pass: "小淘气"  
+  bjorn_pass: "比约恩"  
+  spacefarer_pass: "遨游太空"  
+  year_of_the_rabbit_pass: "兔年"  
+  halloween2022_pass: "2022万圣节"  
+  year_of_the_tiger_pass: "虎年"  
+  avatar_pass: "降世神通：最后的气宗"  
+  cinco_de_mayo_pass: "2022年五月五日节"
 
   navigation:
     home: "主页"
