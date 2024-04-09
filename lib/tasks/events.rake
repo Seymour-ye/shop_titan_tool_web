@@ -5,11 +5,11 @@ namespace :events do
         event_schedule = IceCube::Schedule.new(rec_event.start_time)
         event_schedule.add_recurrence_rule(IceCube::Rule.from_yaml(rec_event.recurrence))
         event_schedule.occurrences(Time.zone.now + 5.years.next).each do |occurence_time|
-          Event.create(name: rec_event.name, 
-                    category: rec_event.category,
-                    start_time: occurence_time, 
-                    end_time: occurence_time + rec_event.duration,
-                    icon_url: rec_event.icon_url)
+        Event.create(name: rec_event.name, 
+                  category: rec_event.category,
+                  start_time: occurence_time, 
+                  end_time: occurence_time + rec_event.duration,
+                  icon_url: rec_event.icon_url)
         end
       end
     end

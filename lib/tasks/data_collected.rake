@@ -22,4 +22,45 @@ namespace :data_collected do
     end
   end
 
+  desc "import monthly events from data_collected and insert into database"
+  task monthly_events: :environment do
+    @sheet = xlsx.sheet("MonthlyEvents")
+    (2..@sheet.last_row).each do |i|
+      @row = i 
+      category = cell_val('a')
+      name = ""
+      start_time = cell_val('b')
+      duration = (ChronicDuration.parse(cell_val('c')) - 1.day).to_i + 1
+      recurrence_rule = IceCube::Rule.daily(28).to_yaml 
+      icon_url = cell_val('e')
+      
+
+      RecursiveEvent.create(name: name,
+                    category: category,
+                    start_time: start_time,
+                    duration: duration,
+                    icon_url: icon_url,
+                    recurrence: recurrence_rule)
+    end
+  end
+
+  desc "import content pass from data_collected and insert into database"
+  task content_pass: :environment do
+    @sheet = xlsx.sheet("ContentPass")
+    (2..@sheet.last_row).each do |i|
+      @row = i 
+      category = "content_pass"
+      name = cell_val('a')
+      start_time = cell_val('b')
+      end_time = cell_val('c')
+      icon_url = cell_val('d')
+
+      Event.create(name: name,
+                  category: category,
+                  start_time: start_time,
+                  end_time: end_time,
+                  icon_url: icon_url)
+    end
+  end
+
 end
