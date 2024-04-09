@@ -1,8 +1,10 @@
-namespace :flashquests do
+namespace :data_collected do
+
+  url = Rails.root.join('lib', 'data_imports', 'data_collected.xlsx')
+  xlsx = Roo::Excelx.new(url.to_s)
+
   desc "import flashquests from data_collected and insert into database"
-  task import: :environment do
-    url = Rails.root.join('lib', 'data_imports', 'data_collected.xlsx')
-    xlsx = Roo::Excelx.new(url.to_s)
+  task flash_quest: :environment do
     @sheet = xlsx.sheet("FlashQuests")
     (2..@sheet.last_row).each do |i|
       @row = i 

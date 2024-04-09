@@ -377,4 +377,7 @@ end
 
 ## Meeting Outline
 - how filter applies to blueprints#index
+  - js handle `.hidden`
+  - controller handle `@blueprints`
 - locale switch
+  - js?
