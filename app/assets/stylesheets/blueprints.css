@@ -9,3 +9,21 @@
     width: 10rem;
     margin: 3px;
 }
+
+#blueprint_filters .filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f5f5f5;
+  }
+  
+  #blueprint_filters .filter div {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  #blueprint_filters .filter .active {
+    background-color: #e0e0e0;
+  }
+
+

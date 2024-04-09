@@ -3,7 +3,12 @@ class BlueprintsController < ApplicationController
 
   # GET /blueprints or /blueprints.json
   def index
-    @blueprints = Blueprint.all
+    @blueprints = Blueprint.all 
+    
+    if params[:selectedOptions].present? && params[:filterType].present?
+      @blueprints = Blueprint.all[1..5]
+      # @blueprints = @blueprints.where(params[:filterType] => params[:selectedOptions])
+    end
   end
 
   # GET /blueprints/1 or /blueprints/1.json

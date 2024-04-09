@@ -350,7 +350,6 @@ end
 
 
 # TODO LIST
-- locale set back to browser default, should keep same after set to other options
 - add a switch/button for language change
 - add task for import monthly events and content pass
 - modify calendar to ensure new events displayed properly
