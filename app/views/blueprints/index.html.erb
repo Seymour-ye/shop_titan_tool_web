@@ -2,29 +2,8 @@
 
 <h1>Blueprints</h1>
 
-<div id="blueprint_filters">
-  <div id="tier" class="filter">
-    <div filter-option="select-all">Select All</div>
-    <div filter-option="select-none">Select None</div>
-    <% (1..13).each do |tier| %>
-      <div filter-option="<%= tier %>"><%= tier %></div>
-    <% end %>
-  </div>
-  <div id="category" class="filter">
-    <div filter-option="select-all">Select All</div>
-    <div filter-option="select-none">Select None</div>
-    <div filter-option="sword">Sword</div>
-    <div filter-option="axe">Axe</div>
-    <!-- Add more categories as needed -->
-  </div>
-  <div id="resource" class="filter">
-    <div filter-option="select-all">Select All</div>
-    <div filter-option="select-none">Select None</div>
-    <div filter-option="oil">Oil</div>
-    <div filter-option="jewel">Jewel</div>
-    <!-- Add more resources as needed -->
-  </div>
-</div>
+<%# render 'blueprints/filter' %>
+
 
 <div id="blueprints">
   <% @blueprints.each do |blueprint| %>
