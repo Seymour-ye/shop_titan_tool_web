@@ -1,5 +1,6 @@
 // create a new event listener
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('turbo:load', function(){
+    console.log('Event listener initialized');
     // create a new method for any filter change
     const filterChange = function(filterContainer, filterType) {
         // get all filter options in the filter container
