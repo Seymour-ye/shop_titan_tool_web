@@ -17,12 +17,19 @@
 
         a {
             padding: 10px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin: 5px;
             text-decoration: none;
             color: white;
             &:hover {
                 background-color: rgb(125, 125, 125);
             }
         }
+    }
+
+    .table {
+        width: 100%;
     }
 
 
@@ -57,10 +64,6 @@
     .wday-5 {}
     .wday-6 {}
   
-    .today {
-        font-weight: 900;
-        background-color: rgb(246, 246, 234);
-    }
     .past {
     }
     .future {}
@@ -79,6 +82,11 @@
         .date {
             background-color: black ;
         }
+    }
+
+    .today {
+        font-weight: 900;
+        background-color: lightcoral;
     }
   
     .has-events {}

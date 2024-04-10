@@ -375,5 +375,3 @@ end
 - bug-fix: locale keep setting to browser default
 - basic filter added
 - Calendar name of the month showing the next month(bug fixed: using month as index so skipped index 0 in translation list)
-
-
