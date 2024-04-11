@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     scope ":locale" do 
+        put "/blueprits/filter_update", to: "blueprints#filter_update", as: :filter_update
+
         get '/calendar', to: 'calendar#index'
         get 'static_pages/home'
         resources :events
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
         resources :quests
         resources :workers
         resources :blueprints
-        root to: "static_pages#home", as: :localized_root # You can now use localized_root_path
+        root to: "static_pages#home", as: :localized_root #localized_root_path
 
     end 
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

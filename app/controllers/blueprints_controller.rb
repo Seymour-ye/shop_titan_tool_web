@@ -3,12 +3,15 @@ class BlueprintsController < ApplicationController
 
   # GET /blueprints or /blueprints.json
   def index
-    @blueprints = Blueprint.all 
+    # @blueprints = Blueprint.all 
+    @blueprints = []
+    @tiers = Blueprint.select(:tier).distinct.pluck(:tier).sort!
+    @categories = Blueprint.select(:category).distinct.pluck(:category)
     
-    if params[:selectedOptions].present? && params[:filterType].present?
-      @blueprints = Blueprint.all[1..5]
+    # if params[:selectedOptions].present? && params[:filterType].present?
+      # @blueprints = Blueprint.all[1..5]
       # @blueprints = @blueprints.where(params[:filterType] => params[:selectedOptions])
-    end
+    # end
   end
 
   # GET /blueprints/1 or /blueprints/1.json
@@ -60,6 +63,17 @@ class BlueprintsController < ApplicationController
       format.html { redirect_to blueprints_url, notice: "Blueprint was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def filter_update
+    @blueprints = Blueprint.where(tier: params["tier"], 
+                                category: params["category"])
+
+    respond_to do |format|
+      format.html { redirect_to blueprints_url}
+      format.turbo_stream
+    end
+
   end
 
   private

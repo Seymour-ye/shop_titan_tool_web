@@ -3,7 +3,30 @@
 <h1>Blueprints</h1>
 
 <%# render 'blueprints/filter' %>
-
+<div class="checkbox-wrapper-47">
+<%= form_with url: filter_update_path, method: :put do |form| %>
+  <div>
+    <% @tiers.each do |tier| %>
+    <%= form.check_box :tier, { id: "tier_#{tier}", 
+                          value: tier, 
+                          multiple: true, 
+                          onchange: "this.form.requestSubmit();" , 
+                          checked: true }, tier, nil%>
+    <%= form.label "tier_#{tier}", tier %>
+  <% end %>
+  </div>
+  <div>
+    <% @categories.each do |category| %>
+    <%= form.check_box :category, { id: "category_#{category}", 
+                          value: category, 
+                          multiple: true, 
+                          onchange: "this.form.requestSubmit();" , 
+                          checked: true }, category, nil%>
+    <%= form.label "category_#{category}", category %>
+  <% end %>
+  </div>
+<% end %>
+</div>
 
 <div id="blueprints">
   <% @blueprints.each do |blueprint| %>
@@ -14,3 +37,9 @@
 </div>
 
 <%# link_to "New blueprint", new_blueprint_path %>
+
+<%# <div class="checkbox-wrapper-47">
+  <input type="checkbox" name="cb" id="cb-47" />
+  <label for="cb-47">Check this</label>
+</div> %>
+
