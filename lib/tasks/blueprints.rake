@@ -7,7 +7,18 @@ namespace :blueprints do
     (2..@sheet.last_row).each do |row|
       @row = row
       name_en = cell_val('a')
+
       category = cell_val('b')
+      if category == "Enchantment"
+        if name_en.include?("Spirit")
+          category = "spirit"
+        else 
+          category = "element"
+        end
+      else 
+        category = category.downcase.split.join('_')
+      end
+
       unlock_prerequisite = cell_val('c')
       research_scrolls = cell_val('d')
       antique_tokens = cell_val('e')
