@@ -3,8 +3,8 @@ class BlueprintsController < ApplicationController
 
   # GET /blueprints or /blueprints.json
   def index
-    # @blueprints = Blueprint.all 
-    @blueprints = []
+    @blueprints = Blueprint.all 
+    # @blueprints = []
     @tiers = Blueprint.select(:tier).distinct.pluck(:tier).sort!
     @categories = Blueprint.select(:category).distinct.pluck(:category)
     
