@@ -1,20 +1,10 @@
 class BlueprintsController < ApplicationController
   before_action :set_blueprint, only: %i[ show edit update destroy ]
+  before_action :set_filters,   only: %i[ index filter_update]
 
   # GET /blueprints or /blueprints.json
   def index
     @blueprints = Blueprint.all 
-    # @blueprints = []
-    @tiers = Blueprint.select(:tier).distinct.pluck(:tier).sort!
-    # @categories = Blueprint.select(:category).distinct.pluck(:category)
-    @weapons = ['sword', 'axe', 'dagger', 'mace', 'spear', 'bow', 'wand', 'staff', 'gun', 'crossbow', 'instrument']
-    @accessories = ['herbal_medicine', 'potion', 'spell', 'shield', 'ring', 'amulet', 'cloak', 'familiar', 'aurasong','meal', 'dessert']
-    @armors = ['heavy_armor', 'light_armor', 'clothes','helmet','rogue_hat', 'magician_hat', 'gauntlets', 'gloves', 'heavy_footwear','light_footwear']
-    @other_categories = ['runestone', 'moonstone', 'element', 'spirit']
-    # if params[:selectedOptions].present? && params[:filterType].present?
-      # @blueprints = Blueprint.all[1..5]
-      # @blueprints = @blueprints.where(params[:filterType] => params[:selectedOptions])
-    # end
   end
 
   # GET /blueprints/1 or /blueprints/1.json
@@ -69,8 +59,24 @@ class BlueprintsController < ApplicationController
   end
 
   def filter_update
-    @blueprints = Blueprint.where(tier: params["tier"], 
-                                category: params["category"])
+    filter = {}
+    # binding.b
+    if params["resource"]
+      @resources.each do |resource|
+        if !params["resource"].include?(resource)
+          filter[resource.to_sym] = nil
+        end
+      end
+    else 
+      @resources.each do |resource|
+        filter[resource.to_sym] = 0
+      end
+    end 
+
+    filter[:tier] = params["tier"]
+    filter[:category] = params["category"]
+
+    @blueprints = Blueprint.where(filter)
 
     respond_to do |format|
       format.html { redirect_to blueprints_url}
@@ -88,5 +94,14 @@ class BlueprintsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def blueprint_params
       params.fetch(:blueprint, {})
+    end
+
+    def set_filters
+      @tiers = Blueprint.select(:tier).distinct.pluck(:tier).sort!
+      @weapons = ['sword', 'axe', 'dagger', 'mace', 'spear', 'bow', 'wand', 'staff', 'gun', 'crossbow', 'instrument']
+      @accessories = ['herbal_medicine', 'potion', 'spell', 'shield', 'ring', 'amulet', 'cloak', 'familiar', 'aurasong','meal', 'dessert']
+      @armors = ['heavy_armor', 'light_armor', 'clothes','helmet','rogue_hat', 'magician_hat', 'gauntlets', 'gloves', 'heavy_footwear','light_footwear']
+      @other_categories = ['runestone', 'moonstone', 'element', 'spirit']
+      @resources = ['iron', 'wood', 'leather', 'herbs', 'steel', 'ironwood', 'fabric', 'oil', 'jewels', 'ether', 'essence']
     end
 end
