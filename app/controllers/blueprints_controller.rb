@@ -76,7 +76,13 @@ class BlueprintsController < ApplicationController
     filter[:tier] = params["tier"]
     filter[:category] = params["category"]
 
-    @blueprints = Blueprint.where(filter).where.not(filter_not)
+    @blueprints = Blueprint.where(filter)
+
+    if !filter_not.empty?
+      filter_not.each do |key, val|
+        @blueprints = @blueprints.where.not(key => val)
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to blueprints_url}
