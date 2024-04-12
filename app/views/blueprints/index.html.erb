@@ -12,16 +12,26 @@
       <span>Tier</span>
     </div>
     <% @tiers.each do |tier| %>
-    <%= form.check_box :tier, { id: "tier_#{tier}", 
-                          value: tier, 
-                          multiple: true, 
-                          onchange: "this.form.requestSubmit();" , 
-                          checked: true }, tier, nil%>
-    <%= form.label "tier_#{tier}" do %>
-    <%= image_tag"general/tier_bg", alt: "tier#{tier}" %>
-    <span class="text-overlay"><%= tier %></span>
+      <%= form.check_box :tier, { id: "tier_#{tier}", 
+                            value: tier, 
+                            multiple: true, 
+                            onchange: "this.form.requestSubmit();" , 
+                            checked: true }, tier, nil%>
+      <%= form.label "tier_#{tier}" do %>
+        <%= image_tag"general/tier_bg", alt: "tier#{tier}" %>
+        <span class="text-overlay"><%= tier %></span>
+      <% end %>
+    <% end %> 
+    <%= form.check_box :special, {id: "tier_select_all", 
+                                multiple: true, 
+                                checked: true}%>
+    <%= form.label "tier_select_all" do %>
+      <%= image_tag "categories/all", alt: "Select All" %>
     <% end %>
-  <% end %>
+    <%= form.check_box :special, {id: "tier_select_none"}%>
+    <%= form.label "tier_select_none" do %>
+      <%= image_tag "categories/none", alt: "Select None" %>
+    <% end %>
   </div>
 
   <div class="filter">
@@ -74,6 +84,16 @@
       <%= form.label "category_#{category}" do  %>
         <%= image_tag "categories/#{category}", alt: category %>
       <% end %>
+    <% end %>
+    <%= form.check_box :special, {id: "category_select_all",
+                                 multiple: true, 
+                                 checked: true}%>
+    <%= form.label "category_select_all" do %>
+      <%= image_tag "categories/all", alt: "Select All" %>
+    <% end %>
+    <%= form.check_box :special, {id: "category_select_none"}%>
+    <%= form.label "category_select_none" do %>
+      <%= image_tag "categories/none", alt: "Select None" %>
     <% end %>
   </div>
 <% end %>
