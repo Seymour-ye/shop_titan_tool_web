@@ -351,7 +351,7 @@ end
 
 
 # TODO LIST
-- filter: resource & components selection
+- filter: components selection
 - sort by: favor, airship power, etc...
 - add a switch/button for language change
 - display correct info about each blueprint in `_blueprint`
@@ -379,3 +379,6 @@ end
 - js event listener not loaded until refresh (bug fixed: turbo load)
 - basic filter added
 - filter: select all & select none features
+- filter: resource selection
+- filter: stick on top, minor css changes
+
