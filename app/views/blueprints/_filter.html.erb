@@ -1,6 +1,6 @@
 <div id="blueprint_filters">
-<%= form_with url: url_for(controller: 'blueprints', action: 'filter_update'), method: :put do |form| %>
-  
+<%= form_with url: filter_update_path, method: :put do |form| %>
+
   <div>
     <div class="filter">
       <div class="filter_name"><span>Tier</span></div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     scope ":locale" do 
+        put "/blueprits/filter_update", to: "blueprints#filter_update", as: :filter_update
+
         get '/calendar', to: 'calendar#index'
         get 'static_pages/home'
         resources :events
