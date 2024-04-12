@@ -3,27 +3,78 @@
 <h1>Blueprints</h1>
 
 <%# render 'blueprints/filter' %>
-<div class="checkbox-wrapper-47">
+<div id="blueprint_filters">
+<%# <div class="checkbox-wrapper-47"> %>
 <%= form_with url: filter_update_path, method: :put do |form| %>
-  <div>
+  
+  <div class="filter">
+    <div class="filter_name">
+      <span>Tier</span>
+    </div>
     <% @tiers.each do |tier| %>
     <%= form.check_box :tier, { id: "tier_#{tier}", 
                           value: tier, 
                           multiple: true, 
                           onchange: "this.form.requestSubmit();" , 
                           checked: true }, tier, nil%>
-    <%= form.label "tier_#{tier}", tier %>
+    <%= form.label "tier_#{tier}" do %>
+    <%= image_tag"general/tier_bg", alt: "tier#{tier}" %>
+    <span class="text-overlay"><%= tier %></span>
+    <% end %>
   <% end %>
   </div>
-  <div>
-    <% @categories.each do |category| %>
-    <%= form.check_box :category, { id: "category_#{category}", 
-                          value: category, 
-                          multiple: true, 
-                          onchange: "this.form.requestSubmit();" , 
-                          checked: true }, category, nil%>
-    <%= form.label "category_#{category}", category %>
-  <% end %>
+
+  <div class="filter">
+    <div class="filter_name">Category</div>
+    <% @weapons.each do |category| %>
+      <%= form.check_box :category, { id: "category_#{category}", 
+                            value: category, 
+                            multiple: true, 
+                            onchange: "this.form.requestSubmit();" , 
+                            checked: true }, category, nil%>
+      <%= form.label "category_#{category}" do  %>
+        <%= image_tag "categories/#{category}", alt: category %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="filter">
+    <div class="filter_name"></div>
+    <% @armors.each do |category| %>
+      <%= form.check_box :category, { id: "category_#{category}", 
+                            value: category, 
+                            multiple: true, 
+                            onchange: "this.form.requestSubmit();" , 
+                            checked: true }, category, nil%>
+      <%= form.label "category_#{category}" do  %>
+        <%= image_tag "categories/#{category}", alt: category %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="filter">
+    <div class="filter_name"></div>
+    <% @accessories.each do |category| %>
+      <%= form.check_box :category, { id: "category_#{category}", 
+                            value: category, 
+                            multiple: true, 
+                            onchange: "this.form.requestSubmit();" , 
+                            checked: true }, category, nil%>
+      <%= form.label "category_#{category}" do  %>
+        <%= image_tag "categories/#{category}", alt: category %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="filter">
+    <div class="filter_name"></div>
+    <% @other_categories.each do |category| %>
+      <%= form.check_box :category, { id: "category_#{category}", 
+                            value: category, 
+                            multiple: true, 
+                            onchange: "this.form.requestSubmit();" , 
+                            checked: true }, category, nil%>
+      <%= form.label "category_#{category}" do  %>
+        <%= image_tag "categories/#{category}", alt: category %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 </div>

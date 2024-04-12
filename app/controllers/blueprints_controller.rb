@@ -6,8 +6,11 @@ class BlueprintsController < ApplicationController
     @blueprints = Blueprint.all 
     # @blueprints = []
     @tiers = Blueprint.select(:tier).distinct.pluck(:tier).sort!
-    @categories = Blueprint.select(:category).distinct.pluck(:category)
-    
+    # @categories = Blueprint.select(:category).distinct.pluck(:category)
+    @weapons = ['sword', 'axe', 'dagger', 'mace', 'spear', 'bow', 'wand', 'staff', 'gun', 'crossbow', 'instrument']
+    @accessories = ['herbal_medicine', 'potion', 'spell', 'shield', 'ring', 'amulet', 'cloak', 'familiar', 'aurasong','meal', 'dessert']
+    @armors = ['heavy_armor', 'light_armor', 'clothes','helmet','rogue_hat', 'magician_hat', 'gauntlets', 'gloves', 'heavy_footwear','light_footwear']
+    @other_categories = ['runestone', 'moonstone', 'element', 'spirit']
     # if params[:selectedOptions].present? && params[:filterType].present?
       # @blueprints = Blueprint.all[1..5]
       # @blueprints = @blueprints.where(params[:filterType] => params[:selectedOptions])
