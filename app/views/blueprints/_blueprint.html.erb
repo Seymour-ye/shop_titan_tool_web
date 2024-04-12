@@ -1,3 +1,14 @@
 <div id="<%= dom_id blueprint %>" class="blueprint">
 <h2><%= blueprint.name %></h1>
+<div class="resources_listing">
+    <% @resources.each do |resource| %>
+        <% resource_val = blueprint.send(resource) %>
+        <% if resource_val %>
+            <div class="crafting_resource">
+                <%= image_tag "resources/#{resource}", Alt: resource %>
+                <%= resource_val %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
 </div>

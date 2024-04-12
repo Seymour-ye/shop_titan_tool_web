@@ -1,6 +1,6 @@
 class BlueprintsController < ApplicationController
   before_action :set_blueprint, only: %i[ show edit update destroy ]
-  before_action :set_filters,   only: %i[ index filter_update]
+  before_action :set_filters,   only: %i[ index show filter_update]
 
   # GET /blueprints or /blueprints.json
   def index

@@ -3,11 +3,35 @@
     flex-wrap: wrap;
     justify-content: center;
 
+    a {
+      list-style: none;
+      text-decoration: none;
+      color: white;
+    }
+
 }
 
 .blueprint {
-    width: 10rem;
-    margin: 3px;
+  background-color: #864868; 
+  width: 10rem;
+  margin: 3px;
+  padding: 3px;
+  text-align: center;
+  height: 15rem;
+
+  .resources_listing{
+    display: flex;
+
+    .crafting_resource{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      img {
+        width: 2em;
+      }
+    }
+  }
+    
 }
 
 #blueprint_filters {
