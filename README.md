@@ -351,6 +351,8 @@ end
 
 
 # TODO LIST
+- blueprint view in index
+- filter: test on resource filtering
 - filter: components selection
 - sort by: favor, airship power, etc...
 - add a switch/button for language change

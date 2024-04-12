@@ -85,21 +85,38 @@
   </div>
   <div>
     <div class="filter">
-      <div class="filter_name">Resources</div>
+      <div class="filter_name">Resources Inclu</div>
       <% @resources.each do |resource| %>
-        <%= form.check_box :resource, { id: "resource_#{resource}", 
+        <%= form.check_box :valid_resource, { id: "valid_resource_#{resource}", 
                               value: resource, 
                               multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, resource, nil%>
-        <%= form.label "resource_#{resource}" do  %>
+                              onchange: "this.form.requestSubmit();"}, resource, nil%>
+        <%= form.label "valid_resource_#{resource}" do  %>
           <%= image_tag "resources/#{resource}", alt: resource %>
         <% end %>
       <% end %>
-      <%= form.button "", class: 'select-all-button' , data: {target: "resource" } do %>
+      <%= form.button "", class: 'select-all-button' , data: {target: "valid_resource" } do %>
         <%= image_tag "general/all", alt: "Select All" %>
       <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "resource" } do %>
+      <%= form.button "", class: 'select-none-button' , data: {target: "valid_resource" } do %>
+        <%= image_tag "general/none", alt: "Select None" %>
+      <% end %>
+    </div>
+    <div class="filter">
+      <div class="filter_name">Resources Exclu</div>
+      <% @resources.each do |resource| %>
+        <%= form.check_box :invalid_resource, { id: "invalid_resource_#{resource}", 
+                              value: resource, 
+                              multiple: true, 
+                              onchange: "this.form.requestSubmit();"}, resource, nil%>
+        <%= form.label "invalid_resource_#{resource}" do  %>
+          <%= image_tag "resources/#{resource}", alt: resource %>
+        <% end %>
+      <% end %>
+      <%= form.button "", class: 'select-all-button' , data: {target: "invalid_resource" } do %>
+        <%= image_tag "general/all", alt: "Select All" %>
+      <% end %>
+      <%= form.button "", class: 'select-none-button' , data: {target: "invalid_resource" } do %>
         <%= image_tag "general/none", alt: "Select None" %>
       <% end %>
     </div>

@@ -1,4 +1,5 @@
 <%= turbo_stream.update "blueprints" do %>
+    <%= "蓝图共#{@blueprints.count}条" %>
     <% @blueprints.each do |blueprint| %>
         <%= link_to(blueprint) do %>
             <%= render blueprint %>

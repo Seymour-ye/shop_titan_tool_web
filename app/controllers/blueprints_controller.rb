@@ -60,23 +60,23 @@ class BlueprintsController < ApplicationController
 
   def filter_update
     filter = {}
-    # binding.b
-    if params["resource"]
-      @resources.each do |resource|
-        if !params["resource"].include?(resource)
-          filter[resource.to_sym] = nil
-        end
-      end
-    else 
-      @resources.each do |resource|
-        filter[resource.to_sym] = 0
-      end
-    end 
+    filter_not = {}
 
+    if params["valid_resource"]
+      params["valid_resource"].each do |resource|
+        filter_not[resource.to_sym] = nil 
+      end
+    end
+
+    if params["invalid_resource"]
+      params["invalid_resource"].each do |resource|
+        filter[resource.to_sym] = nil
+      end
+    end
     filter[:tier] = params["tier"]
     filter[:category] = params["category"]
 
-    @blueprints = Blueprint.where(filter)
+    @blueprints = Blueprint.where(filter).where.not(filter_not)
 
     respond_to do |format|
       format.html { redirect_to blueprints_url}
