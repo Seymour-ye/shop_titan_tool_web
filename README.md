@@ -351,13 +351,12 @@ end
 
 
 # TODO LIST
-- filter features added but `@blueprints` not updating, need to discuss with william.
+- filter: resource & components selection
+- sort by: favor, airship power, etc...
 - add a switch/button for language change
-- add task for import monthly events and content pass
-- modify calendar to ensure new events displayed properly
-- add filter and sort_by features to `blueprint#index`
 - display correct info about each blueprint in `_blueprint`
 - display all information about each blueprint in `blueprint#show`
+- Calendar: Boss Quest Refresh Count Down
 
 ## Done
 - draft models for data import
@@ -375,4 +374,8 @@ end
 - bug-fix: locale keep setting to browser default
 - basic filter added
 - Calendar name of the month showing the next month(bug fixed: using month as index so skipped index 0 in translation list)
+- add task for import monthly events and content pass
+- Calendar: finished
 - js event listener not loaded until refresh (bug fixed: turbo load)
+- basic filter added
+- filter: select all & select none features

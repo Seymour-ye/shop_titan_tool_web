@@ -39,6 +39,12 @@
     cursor: pointer;
     
   }
+
+  button {
+    padding: 0;
+    margin: 5px;
+    background-color: #864868;
+  }
   input[type=checkbox]:checked + label {
     margin: 5px;
     width: 2em;
