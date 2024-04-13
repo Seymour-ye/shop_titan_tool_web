@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         resources :quests
         resources :workers
         resources :blueprints
+        resources :languages, only: [:update]
         root to: "static_pages#home", as: :localized_root #localized_root_path
 
     end 
