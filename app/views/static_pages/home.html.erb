@@ -4,4 +4,9 @@
   <li><%= link_to "Shop Titans Official Spreadsheet", "https://docs.google.com/spreadsheets/d/1WLa7X8h3O0-aGKxeAlCL7bnN8-FhGd3t7pz2RCzSg8c" %></li>
   <li><%= link_to "Shop Titans Official Website", "https://playshoptitans.com/" %></li>
   <li><%= link_to "ST Central", "https://st-central.net/" %></li>
+  <li>
+    <%= button_to 'Switch to English', language_path(id: 'en'), method: :patch %>
+    <%= button_to 'Switch to chinese', language_path(id: 'zh'), method: :patch %>
+  </li>
+
 </ul>
