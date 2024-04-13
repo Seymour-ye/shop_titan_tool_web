@@ -3,7 +3,7 @@
 
   <div>
     <div class="filter">
-      <div class="filter_name"><span>Tier</span></div>
+      <div class="filter_name"><span><%= t("tier") %></span></div>
       <% @tiers.each do |tier| %>
         <%= form.check_box :tier, { id: "tier_#{tier}", 
                               value: tier, 
@@ -25,7 +25,7 @@
     </div>
 
     <div class="filter">
-      <div class="filter_name">Category</div>
+      <div class="filter_name"><%= t("category") %></div>
       <% @weapons.each do |category| %>
         <%= form.check_box :category, { id: "category_#{category}", 
                               value: category, 
@@ -85,7 +85,7 @@
   </div>
   <div>
     <div class="filter">
-      <div class="filter_name">Resources Inclu</div>
+      <div class="filter_name"><%= "#{t('resource')} #{t('inclusion')}" %></div>
       <% @resources.each do |resource| %>
         <%= form.check_box :valid_resource, { id: "valid_resource_#{resource}", 
                               value: resource, 
@@ -103,7 +103,7 @@
       <% end %>
     </div>
     <div class="filter">
-      <div class="filter_name">Resources Exclu</div>
+      <div class="filter_name"><%= "#{t('resource')} #{t('exclusion')}" %></div>
       <% @resources.each do |resource| %>
         <%= form.check_box :invalid_resource, { id: "invalid_resource_#{resource}", 
                               value: resource, 

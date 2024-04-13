@@ -21,6 +21,12 @@ zh:
   avatar_pass: "降世神通：最后的气宗"  
   cinco_de_mayo_pass: "2022年五月五日节"
 
+  tier: "品阶"
+  category: "分类"
+  resource: "资源"
+  inclusion: "包含"
+  exclusion: "不包含"
+
   navigation:
     home: "主页"
     blueprints: "蓝图"

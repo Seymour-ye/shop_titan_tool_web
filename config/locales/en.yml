@@ -21,6 +21,12 @@ en:
   avatar_pass: "Avatar"  
   cinco_de_mayo_pass: "Cinco de Mayo"
 
+  tier: "Tier"
+  category: "Category"
+  resource: "Resource"
+  inclusion: "Inclusion"
+  exclusion: "Exclusion"
+
   _navigation:
     home: "Home"
     blueprints: "Blueprints"
