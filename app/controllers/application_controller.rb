@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 
-  def default_url_options
-    { locale: I18n.locale }
-  end
+  # def default_url_options
+  #   { locale: I18n.locale }
+  # end
 end

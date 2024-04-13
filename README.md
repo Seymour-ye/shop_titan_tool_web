@@ -181,6 +181,80 @@ If want to set the time zone globally, set the following in `config/application.
 config.time_zone = 'Central Time (US & Canada)'
 ```
 
+# i18n
+1. Set up
+```
+$ bundle add rails-i18n
+```
+then in `config/application.rb` set
+```
+config.i18n.available_locales = [:en, :zh]
+config.i18n.default_locale = :en
+```
+2. Now files in `config/locales/` will work, translations should be stored here, if any other position is using for 
+storing language file, should add the following in `config/application.rb`
+```
+I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]       # adding 'project_root/lib/locale/*.yml'
+```
+3. Use `i18n` in views, like in `_navigation.html.erb`
+4. Local in URL: `localhost:3000/en/calendar`
+set default url options and make sure locale is updated before each action, in `controllers/application_controller.rb`:
+```
+before_action :set_locale
+
+private
+
+def set_locale
+  I18n.locale = params[:locale] || I18n.default_locale
+end
+
+def default_url_options
+    { locale: I18n.locale }
+end
+```
+and add `scope` in `config/routes.rb`, remember to deal with the special case: home page:
+```
+scope ":locale" do 
+    get '/calendar', to: 'calendar#index'
+    ...
+    resources :blueprints
+    root to: "static_pages#home", as: :localized_root
+end 
+root to: redirect("/#{I18n.locale}", status: 302)
+```
+Use `localized_root_path` instead of `root_path`.
+
+5. Set locale by browser preference
+Step4 will redirect `localhost:3000` to `localhost:3000/default_locale`, if want locale set by users' preference,
+in `app/controllers/application_controller.rb`, change:
+```
+before_action :set_locale
+
+private
+
+def set_locale
+  I18n.locale = params[:locale] || I18n.default_locale
+end
+```
+to 
+```
+around_action :switch_locale
+
+private
+
+def switch_locale(&action)
+  logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+  locale = extract_locale_from_accept_language_header
+  logger.debug "* Locale set to '#{locale}'"
+  I18n.with_locale(locale, &action)
+end
+
+def extract_locale_from_accept_language_header
+  request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+end
+```
+**Note**: keep the `default_url_options` method, otherwise routes will not work properly.
+
 # Problems
 ## Whitespace above Navigation bar
 ### Description
@@ -275,80 +349,21 @@ ul {
     unicode-bidi: isolate;
 }
 ```
-# i18n
-1. Set up
-```
-$ bundle add rails-i18n
-```
-then in `config/application.rb` set
-```
-config.i18n.available_locales = [:en, :zh]
-config.i18n.default_locale = :en
-```
-2. Now files in `config/locales/` will work, translations should be stored here, if any other position is using for 
-storing language file, should add the following in `config/application.rb`
-```
-I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]       # adding 'project_root/lib/locale/*.yml'
-```
-3. Use `i18n` in views, like in `_navigation.html.erb`
-4. Local in URL: `localhost:3000/en/calendar`
-set default url options and make sure locale is updated before each action, in `controllers/application_controller.rb`:
-```
-before_action :set_locale
 
-private
-
-def set_locale
-  I18n.locale = params[:locale] || I18n.default_locale
-end
-
-def default_url_options
-    { locale: I18n.locale }
-end
-```
-and add `scope` in `config/routes.rb`, remember to deal with the special case: home page:
-```
-scope ":locale" do 
-    get '/calendar', to: 'calendar#index'
-    ...
-    resources :blueprints
-    root to: "static_pages#home", as: :localized_root
-end 
-root to: redirect("/#{I18n.locale}", status: 302)
-```
-Use `localized_root_path` instead of `root_path`.
-
-5. Set locale by browser preference
-Step4 will redirect `localhost:3000` to `localhost:3000/default_locale`, if want locale set by users' preference,
-in `app/controllers/application_controller.rb`, change:
-```
-before_action :set_locale
-
-private
-
-def set_locale
-  I18n.locale = params[:locale] || I18n.default_locale
-end
-```
-to 
-```
-around_action :switch_locale
-
-private
-
-def switch_locale(&action)
-  logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-  locale = extract_locale_from_accept_language_header
-  logger.debug "* Locale set to '#{locale}'"
-  I18n.with_locale(locale, &action)
-end
-
-def extract_locale_from_accept_language_header
-  request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-end
-```
-**Note**: keep the `default_url_options` method, otherwise routes will not work properly.
-
+## Switching Locale
+### Description
+`locale` is set in url options and scoped in form of `localhost:3000/en/blueprints` and will set defaultly by browser default, while adding button for users to switch locale, it failed to do so since `params[:locale]` will set back to the `locale` value before this action since the url becomes `localhost:3000/en/blueprints?locale=zh`.
+### Solving
+1. With `localhost:3000/en/blueprints?locale=zh`, I think `params[:locale]` is correctly passed by `params`, but since with this url, there are **2 locale values** passed, and `params[:locale]` is replaced by `en` after getting `zh` as its value.
+2. Console logs showing my assumption is correct, when the button is clicked, `params[:locale]` is set to `zh`, and then replaced by `en` due to locale settings.
+3. With William's help, I decided to handle locale changes with session, which is reasonable: When a user visits the first time, `locale` will be set to user's browser default, once the user click on switching language button, `locale` is set to `session`.
+### Solution
+1. If locale handled by session, `locale` in url will not work anymore, then scoping could be removed. 
+2. URL of ALL pages would remain the same with different locales.
+3. Removed locale scope and `localized_root_path` in `routes.rb`
+4. Changed Path to `localized_root_path` to `root_path`.
+5. Removed `default_url_options` in `application_controller.rb`
+6. Should move switch locale button to nav bar.
 
 # TODO LIST
 - blueprint view in index
