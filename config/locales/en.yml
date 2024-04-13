@@ -33,6 +33,7 @@ en:
     heroes: "Heroes"
     events: "Events"
     calendar: "Calendar"
+    select_language: "Select Language"
     
   simple_calendar:
     previous: "<<Previous"

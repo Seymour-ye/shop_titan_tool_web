@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
   def update
-    session[:locale] = params[:id]
+    session[:locale] = params[:language]
 
     redirect_back fallback_location: root_path
   end

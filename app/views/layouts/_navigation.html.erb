@@ -11,4 +11,15 @@
         <li class="<%= active_class '' %>"><%= link_to t('navigation.events'), "#" %></li>
         <li class="<%= active_class 'calendar' %>"><%= link_to t('navigation.calendar'), calendar_path %></li>
     </ul>
+
+    <div id="language-switch">
+        <%= form_with url: language_path(I18n.locale), method: :patch, local: true do |form| %>
+            <%= form.select :language, options_for_select(
+                [['English', 'en'], 
+                ['简体中文', 'zh']]), {
+                prompt: t('navigation.select_language')
+                }, onchange: "this.form.submit();" %>
+        <% end %>
+
+    </div>
 </nav>

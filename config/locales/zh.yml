@@ -33,6 +33,7 @@ zh:
     heroes: "英雄"
     events: "活动"
     calendar: "日历"
+    select_language: "选择语言"
     
   simple_calendar:
     previous: "<<上个月"
