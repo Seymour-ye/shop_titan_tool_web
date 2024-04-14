@@ -46,6 +46,7 @@
     ul {
       display: block;
       width: 7em;
+      height: max-content;
       li {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
@@ -58,6 +59,7 @@
     display: flex;
     flex-direction: row;
     justify-content:flex-start;
+    height: max-content;
   }
 
   .filter-container {
@@ -70,14 +72,19 @@
   }
 
   .filter {
-    display: flex;
+    display: none;
     align-items: center;
+  }
+
+  .filter.active {
+    display: flex;
   }
 
   .filter_name {
     width: 6em;
     min-width: 6em;
     text-align: center;
+    display: inline;
   }
 
   .filter-options {

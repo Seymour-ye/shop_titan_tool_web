@@ -27,6 +27,10 @@ zh:
   components: "零件"
   inclusion: "包含"
   exclusion: "不包含"
+  weapon: "武器"
+  armor: "防具"
+  accessory: "饰品"
+  other: "其它"
 
   component:
     all_seeing_eye: "全视之眼"

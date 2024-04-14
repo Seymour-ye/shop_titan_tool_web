@@ -27,6 +27,10 @@ en:
   components: "Components"
   inclusion: "Inclusion"
   exclusion: "Exclusion"
+  weapon: "Weapon"
+  armor: "Armor"
+  accessory: "Accessory"
+  other: "Other"
 
   component:
     all_seeing_eye: "All-Seeing Eye"

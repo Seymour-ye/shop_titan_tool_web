@@ -1,153 +1,18 @@
-<div id="blueprint_filters">
-<%= form_with url: filter_update_path, method: :put do |form| %>
-  <nav id="filter-side-bar">
-    <ul>
-      <li id="side-bar-tier"> <%= t("tier") %></li>
-      <li id="side-bar-category" class="active"><%= t("category") %></li>
-      <li id="side-bar-resource"><%= t("resource") %></li>
-      <li id="side-bar-components"><%= t("components") %></li>
-    </ul>
-  </nav>
-
-  <div class= "filter-container">
-    <div class="hidden filter-tier">
-      <% @tiers.each do |tier| %>
-        <%= form.check_box :tier, { id: "tier_#{tier}", 
-                              value: tier, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, tier, nil%>
-        <%= form.label "tier_#{tier}" do %>
-          <%= image_tag"general/tier_bg", alt: "tier#{tier}" %>
-          <span class="text-overlay"><%= tier %></span>
+    <div class="filter_name"><%= t(filter_name) %></div>
+    <% options.each do |option| %>
+        <%= form.check_box filter_target.to_sym, {
+            id: "#{filter_target}_#{option}",
+            value: option,
+            multiple: true,
+            onchange: "this.form.requestSubmit();",
+            checked: checked
+        }, option, nil %>
+        <%= form.label "#{filter_target}_#{option}" do %>
+            <% if !img_url %>
+                <%= image_tag "general/tier_bg", alt:"tier#{option}" %>
+                <span class="text-overlay"><%= option %></span>
+            <% else %>
+                <%= image_tag "#{img_url}/#{option}", alt: "option" %>
+            <% end %>
         <% end %>
-      <% end %> 
-      
-      <%= form.button "", class: 'select-all-button' , data: {target: "tier" } do %>
-        <%= image_tag "general/all", alt: "Select All" %>
-      <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "tier" } do %>
-        <%= image_tag "general/none", alt: "Select None" %>
-      <% end %>
-    </div>
-
-    <div class="filter filter-category">
-      <% @weapons.each do |category| %>
-        <%= form.check_box :category, { id: "category_#{category}", 
-                              value: category, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, category, nil%>
-        <%= form.label "category_#{category}" do  %>
-          <%= image_tag "categories/#{category}", alt: category %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="filter filter-category">
-      <% @armors.each do |category| %>
-        <%= form.check_box :category, { id: "category_#{category}", 
-                              value: category, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, category, nil%>
-        <%= form.label "category_#{category}" do  %>
-          <%= image_tag "categories/#{category}", alt: category %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="filter filter-category">
-      <% @accessories.each do |category| %>
-        <%= form.check_box :category, { id: "category_#{category}", 
-                              value: category, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, category, nil%>
-        <%= form.label "category_#{category}" do  %>
-          <%= image_tag "categories/#{category}", alt: category %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="filter filter-category">
-      <% @other_categories.each do |category| %>
-        <%= form.check_box :category, { id: "category_#{category}", 
-                              value: category, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();" , 
-                              checked: true }, category, nil%>
-        <%= form.label "category_#{category}" do  %>
-          <%= image_tag "categories/#{category}", alt: category %>
-        <% end %>
-      <% end %>
-      <%= form.button "", class: 'select-all-button' , data: {target: "category" } do %>
-        <%= image_tag "general/all", alt: "Select All" %>
-      <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "category" } do %>
-        <%= image_tag "general/none", alt: "Select None" %>
-      <% end %>
-    </div>
-
-    <div class="filter-resource hidden">
-      <div class="filter_name"><%= "#{t('resource')} #{t('inclusion')}" %></div>
-      <% @resources.each do |resource| %>
-        <%= form.check_box :valid_resource, { id: "valid_resource_#{resource}", 
-                              value: resource, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();"}, resource, nil%>
-        <%= form.label "valid_resource_#{resource}" do  %>
-          <%= image_tag "resources/#{resource}", alt: resource %>
-        <% end %>
-      <% end %>
-      <%= form.button "", class: 'select-all-button' , data: {target: "valid_resource" } do %>
-        <%= image_tag "general/all", alt: "Select All" %>
-      <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "valid_resource" } do %>
-        <%= image_tag "general/none", alt: "Select None" %>
-      <% end %>
-    </div>
-
-    <div class="filter-resource hidden">
-      <div class="filter_name"><%= "#{t('resource')} #{t('exclusion')}" %></div>
-      <% @resources.each do |resource| %>
-        <%= form.check_box :invalid_resource, { id: "invalid_resource_#{resource}", 
-                              value: resource, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();"}, resource, nil%>
-        <%= form.label "invalid_resource_#{resource}" do  %>
-          <%= image_tag "resources/#{resource}", alt: resource %>
-        <% end %>
-      <% end %>
-      <%= form.button "", class: 'select-all-button' , data: {target: "invalid_resource" } do %>
-        <%= image_tag "general/all", alt: "Select All" %>
-      <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "invalid_resource" } do %>
-        <%= image_tag "general/none", alt: "Select None" %>
-      <% end %>
-    </div>
-
-    <div class="filter-component hidden">
-      <div class="filter_name"><%= "#{t('components')} #{t('inclusion')}" %></div>
-      <div class="filter-options">
-        <% @components.each do |component| %>
-          <%= form.check_box :valid_component, { id: "valid_component_#{component.component_id}", 
-                                value: component.component_id, 
-                                multiple: true, 
-                                onchange: "this.form.requestSubmit();"}, component.component_id, nil%>
-          <%= form.label "valid_component_#{component.component_id}" do  %>
-            <%= image_tag "components/#{component.component_id}", alt: t(component.component_id) %>
-          <% end %>
-        <% end %>
-        <%= form.button "", class: 'select-all-button' , data: {target: "valid_component" } do %>
-          <%= image_tag "general/all", alt: "Select All" %>
-        <% end %>
-        <%= form.button "", class: 'select-none-button' , data: {target: "valid_component" } do %>
-          <%= image_tag "general/none", alt: "Select None" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <% end %>
-</div>
+    <% end %>
