@@ -40,10 +40,23 @@
   background-color: #864868;
   color: white;
 
+  nav {
+    position: relative;
+    width: 7em;
+    ul {
+      display: block;
+      width: 7em;
+      li {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        text-align: center;
+      }
+    }
+  }
+
   form {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
   }
 
@@ -59,7 +72,13 @@
 
   .filter_name {
     width: 6em;
+    min-width: 6em;
     text-align: center;
+  }
+
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   label {
