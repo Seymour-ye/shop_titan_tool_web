@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_081147) do
 
   create_table "components", force: :cascade do |t|
     t.string "name"
+    t.string "component_id"
     t.string "category"
     t.integer "tier"
     t.integer "value"

@@ -7,10 +7,12 @@ namespace :components do
     (2..@sheet.last_row).each do |row|
       @row = row 
       name = cell_val('a')
+      component_id = name.downcase.split.join('_').split('-').join('_').split("'").join
       tier = cell_val('b')
       value = cell_val('c')
       get_from = cell_val('d')
       Component.create( name: name,
+                        component_id: component_id,
                         category: 'component',
                         tier: tier,
                         value: value,
