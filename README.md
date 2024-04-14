@@ -369,7 +369,6 @@ ul {
 - blueprint view in index
 - filter: components selection
 - sort by: favor, airship power, each resource, value, merchant_xp, etc...
-- **add a switch/button for language change**
 - display correct info about each blueprint in `_blueprint`
 - display all information about each blueprint in `blueprint#show`
 - Calendar: Boss Quest Refresh Count Down
@@ -398,3 +397,5 @@ ul {
 - filter: resource selection
 - filter: stick on top, minor css changes
 - filter: test on resource filtering (bugfix: must_have ||=>&&)
+- add a switch/button for language change
+  - remove locale scope
