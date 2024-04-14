@@ -57,7 +57,11 @@
   form {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:flex-start;
+  }
+
+  .filter-container {
+    margin-left: 30px;
   }
 
   input[type="checkbox"] {

@@ -3,13 +3,14 @@
   <nav id="filter-side-bar">
     <ul>
       <li id="side-bar-tier"> <%= t("tier") %></li>
-      <li id="side-bar-category"><%= t("category") %></li>
+      <li id="side-bar-category" class="active"><%= t("category") %></li>
       <li id="side-bar-resource"><%= t("resource") %></li>
       <li id="side-bar-components"><%= t("components") %></li>
     </ul>
   </nav>
-  <div class="filter-container">
-    <div class="filter">
+
+  <div class= "filter-container">
+    <div class="hidden filter-tier">
       <% @tiers.each do |tier| %>
         <%= form.check_box :tier, { id: "tier_#{tier}", 
                               value: tier, 
@@ -30,7 +31,7 @@
       <% end %>
     </div>
 
-    <div class="filter">
+    <div class="filter filter-category">
       <% @weapons.each do |category| %>
         <%= form.check_box :category, { id: "category_#{category}", 
                               value: category, 
@@ -42,7 +43,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="filter">
+
+    <div class="filter filter-category">
       <% @armors.each do |category| %>
         <%= form.check_box :category, { id: "category_#{category}", 
                               value: category, 
@@ -54,7 +56,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="filter">
+
+    <div class="filter filter-category">
       <% @accessories.each do |category| %>
         <%= form.check_box :category, { id: "category_#{category}", 
                               value: category, 
@@ -66,7 +69,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="filter">
+
+    <div class="filter filter-category">
       <% @other_categories.each do |category| %>
         <%= form.check_box :category, { id: "category_#{category}", 
                               value: category, 
@@ -84,9 +88,8 @@
         <%= image_tag "general/none", alt: "Select None" %>
       <% end %>
     </div>
-  </div>
-  <div class="filter-container">
-    <div class="filter">
+
+    <div class="filter-resource hidden">
       <div class="filter_name"><%= "#{t('resource')} #{t('inclusion')}" %></div>
       <% @resources.each do |resource| %>
         <%= form.check_box :valid_resource, { id: "valid_resource_#{resource}", 
@@ -105,7 +108,7 @@
       <% end %>
     </div>
 
-    <div class="filter">
+    <div class="filter-resource hidden">
       <div class="filter_name"><%= "#{t('resource')} #{t('exclusion')}" %></div>
       <% @resources.each do |resource| %>
         <%= form.check_box :invalid_resource, { id: "invalid_resource_#{resource}", 
@@ -124,26 +127,27 @@
       <% end %>
     </div>
 
-    <div class="filter">
+    <div class="filter-component hidden">
       <div class="filter_name"><%= "#{t('components')} #{t('inclusion')}" %></div>
       <div class="filter-options">
-      <% @components.each do |component| %>
-        <%= form.check_box :valid_component, { id: "valid_component_#{component.component_id}", 
-                              value: component.component_id, 
-                              multiple: true, 
-                              onchange: "this.form.requestSubmit();"}, component.component_id, nil%>
-        <%= form.label "valid_component_#{component.component_id}" do  %>
-          <%= image_tag "components/#{component.component_id}", alt: t(component.component_id) %>
+        <% @components.each do |component| %>
+          <%= form.check_box :valid_component, { id: "valid_component_#{component.component_id}", 
+                                value: component.component_id, 
+                                multiple: true, 
+                                onchange: "this.form.requestSubmit();"}, component.component_id, nil%>
+          <%= form.label "valid_component_#{component.component_id}" do  %>
+            <%= image_tag "components/#{component.component_id}", alt: t(component.component_id) %>
+          <% end %>
         <% end %>
-      <% end %>
-      <%= form.button "", class: 'select-all-button' , data: {target: "valid_component" } do %>
-        <%= image_tag "general/all", alt: "Select All" %>
-      <% end %>
-      <%= form.button "", class: 'select-none-button' , data: {target: "valid_component" } do %>
-        <%= image_tag "general/none", alt: "Select None" %>
-      <% end %>
+        <%= form.button "", class: 'select-all-button' , data: {target: "valid_component" } do %>
+          <%= image_tag "general/all", alt: "Select All" %>
+        <% end %>
+        <%= form.button "", class: 'select-none-button' , data: {target: "valid_component" } do %>
+          <%= image_tag "general/none", alt: "Select None" %>
+        <% end %>
       </div>
     </div>
-  <% end %>
   </div>
+
+  <% end %>
 </div>
