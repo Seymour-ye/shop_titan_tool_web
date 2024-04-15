@@ -52,14 +52,16 @@ namespace :blueprints do
       essence = cell_val('ai')
 
       components = {}
-      component = cell_val('ak')
+      component = Component.find_by(name: cell_val('ak'))
+      component_name = component ? component.component_id : cell_val('ak')
       quality = cell_val('al')
       amount = cell_val('am')
-      components[component] = {quality: quality, amount: amount} if component
-      component = cell_val('an')
+      components[component_name] = {quality: quality, amount: amount} if component
+      component = Component.find_by(name: cell_val('an'))
+      component_name = component ? component.component_id : cell_val('an')
       quality = cell_val('ao')
       amount = cell_val('ap')
-      components[component] = {quality: quality, amount: amount} if component
+      components[component_name] = {quality: quality, amount: amount} if component
 
       attack = cell_val('ar')
       defence = cell_val('as')
