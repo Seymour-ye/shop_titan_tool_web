@@ -10,5 +10,13 @@
             </div>
         <% end %>
     <% end %>
+    <% @components.each do |component| %>
+        <% if blueprint.components.key?(component) %>
+            <div class="crafting_resource">
+                <%= image_tag "components/#{component}", Alt: component %>
+                <%= blueprint.components[component]['amount'].to_i %>
+            </div>
+        <% end %>
+    <% end %>
 </div>
 </div>

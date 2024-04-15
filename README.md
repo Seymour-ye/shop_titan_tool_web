@@ -378,7 +378,6 @@ config.action_view.preload_links_header = false
 
 # TODO LIST
 - blueprint view in index
-- filter: components selection
 - sort by: favor, airship power, each resource, value, merchant_xp, etc...
 - display correct info about each blueprint in `_blueprint`
 - display all information about each blueprint in `blueprint#show`
@@ -410,3 +409,5 @@ config.action_view.preload_links_header = false
 - filter: test on resource filtering (bugfix: must_have ||=>&&)
 - add a switch/button for language change
   - remove locale scope
+- filter: components selection
+

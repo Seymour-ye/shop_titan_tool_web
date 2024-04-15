@@ -73,8 +73,8 @@ class BlueprintsController < ApplicationController
         filter[resource.to_sym] = nil
       end
     end
-    filter[:tier] = params["tier"]
-    filter[:category] = params["category"]
+    filter[:tier] = params["tier"] if params['tier'].present?
+    filter[:category] = params["category"] if params['category'].present?
 
     @blueprints = Blueprint.where(filter)
 
@@ -82,6 +82,14 @@ class BlueprintsController < ApplicationController
       filter_not.each do |key, val|
         @blueprints = @blueprints.where.not(key => val)
       end
+    end
+
+    if params[:valid_component].present?
+      @blueprints = @blueprints.where("components ?& ARRAY[:keys]", keys: params[:valid_component])
+    end
+
+    if params[:invalid_component].present?
+      @blueprints = @blueprints.where("NOT (components ?| ARRAY[:excluded_keys])", excluded_keys: params[:invalid_component])
     end
 
     respond_to do |format|
