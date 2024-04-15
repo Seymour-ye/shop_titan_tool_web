@@ -12,122 +12,138 @@
   <div class= "filter-container">
 
     <div class="filter", filter-target="tier">
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_name: 'tier',
-        filter_target: 'tier',
-        options: @tiers,
-        form: form,
-        checked: true,
-        img_url: nil,
-      } %>
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'tier',
-        form: form
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_name: 'tier',
+          filter_target: 'tier',
+          options: @tiers,
+          form: form,
+          checked: true,
+          img_url: nil,
+        } %>
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'tier',
+          form: form
+        } %>
+      </div>
     </div>
 
     <div class="filter active", filter-target="category">
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "category",
-        filter_name: 'weapon',
-        options: @weapons,
-        form: form,
-        checked: true,
-        img_url: 'categories',
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "category",
+          filter_name: 'weapon',
+          options: @weapons,
+          form: form,
+          checked: true,
+          img_url: 'categories',
+        } %>
+      </div>
 
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "category",
-        filter_name: 'armors',
-        options: @armors,
-        form: form,
-        checked: true,
-        img_url: 'categories',
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "category",
+          filter_name: 'armor',
+          options: @armors,
+          form: form,
+          checked: true,
+          img_url: 'categories',
+        } %>
+      </div>
 
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "category",
-        filter_name: 'accessories',
-        options: @accessories,
-        form: form,
-        checked: true,
-        img_url: 'categories',
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "category",
+          filter_name: 'accessory',
+          options: @accessories,
+          form: form,
+          checked: true,
+          img_url: 'categories',
+        } %>
+      </div>
 
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "category",
-        filter_name: 'other',
-        options: @other_categories,
-        form: form,
-        checked: true,
-        img_url: 'categories',
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "category",
+          filter_name: 'other',
+          options: @other_categories,
+          form: form,
+          checked: true,
+          img_url: 'categories',
+        } %>
 
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'category',
-        form: form
-      } %>
-
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'category',
+          form: form
+        } %>
+      </div>
     </div>
     
     <div class="filter", filter-target="resource">
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "valid_resource",
-        filter_name: 'inclusion',
-        options: @resources,
-        form: form,
-        checked: false,
-        img_url: 'resources',
-      } %>
 
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'valid_resource',
-        form: form
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "valid_resource",
+          filter_name: 'inclusion',
+          options: @resources,
+          form: form,
+          checked: false,
+          img_url: 'resources',
+        } %>
 
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "invalid_resource",
-        filter_name: 'exclusion',
-        options: @resources,
-        form: form,
-        checked: false,
-        img_url: 'resources',
-      } %>
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'valid_resource',
+          form: form
+        } %>
+      </div>
 
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'invalid_resource',
-        form: form
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "invalid_resource",
+          filter_name: 'exclusion',
+          options: @resources,
+          form: form,
+          checked: false,
+          img_url: 'resources',
+        } %>
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'invalid_resource',
+          form: form
+        } %>
+      </div>
     </div>
 
     <div class="filter", filter-target="components">
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "valid_component",
-        filter_name: 'inclusion',
-        options: @components,
-        form: form,
-        checked: false,
-        img_url: 'components',
-      } %>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "valid_component",
+          filter_name: 'inclusion',
+          options: @components,
+          form: form,
+          checked: false,
+          img_url: 'components',
+        } %>
 
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'valid_component',
-        form: form
-      } %>
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'valid_component',
+          form: form
+        } %>
+      </div>
+      <div class="filter-line">
+        <%= render partial: 'blueprints/filter', locals: {
+          filter_target: "invalid_component",
+          filter_name: 'exclusion',
+          options: @components,
+          form: form,
+          checked: false,
+          img_url: 'components',
+        } %>
 
-      <%= render partial: 'blueprints/filter', locals: {
-        filter_target: "invalid_component",
-        filter_name: 'exclusion',
-        options: @components,
-        form: form,
-        checked: false,
-        img_url: 'components',
-      } %>
-
-      <%= render partial: 'blueprints/filter_all_none', locals: {
-        filter_target: 'invalid_component',
-        form: form
-      } %>
+        <%= render partial: 'blueprints/filter_all_none', locals: {
+          filter_target: 'invalid_component',
+          form: form
+        } %>
+      </div>
     </div>
 
     

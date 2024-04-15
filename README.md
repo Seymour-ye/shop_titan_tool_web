@@ -365,6 +365,17 @@ ul {
 5. Removed `default_url_options` in `application_controller.rb`
 6. Should move switch locale button to nav bar.
 
+## Header preload
+### Description
+Got this warning message:
+> The resource http://localhost:3000/assets/application-eda55435df3b9385974c23342a8ac80ac010272673a829df638338aed54fe933.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate as value and it is preloaded intentionally.
+### Solution
+As mentioned in [this link](https://stackoverflow.com/questions/72753525), this should be only about performance, adding the following in `development.rb` will solve this problem:
+```
+config.action_view.preload_links_header = false
+```
+**Note:** It works for now and might be needed in production as well, but don't know what will be affected yet.
+
 # TODO LIST
 - blueprint view in index
 - filter: components selection

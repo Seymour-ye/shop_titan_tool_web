@@ -1,4 +1,5 @@
     <div class="filter_name"><%= t(filter_name) %></div>
+    <div class="filter_options">
     <% options.each do |option| %>
         <%= form.check_box filter_target.to_sym, {
             id: "#{filter_target}_#{option}",
@@ -16,3 +17,4 @@
             <% end %>
         <% end %>
     <% end %>
+    </div>
