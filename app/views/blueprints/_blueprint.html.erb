@@ -13,8 +13,13 @@
     <% @components.each do |component| %>
         <% if blueprint.components.key?(component) %>
             <div class="crafting_resource">
-                <%= image_tag "components/#{component}", Alt: component %>
-                <%= blueprint.components[component]['amount'].to_i %>
+                <% if component == 'stone' %>
+                    <% comp = blueprint.components[component]['id'] %>
+                    <%= image_tag "stones/#{comp}", Alt: comp %>
+                <% else %>
+                    <%= image_tag "components/#{component}", Alt: component %>
+                    <%= blueprint.components[component]['amount'].to_i %>
+                <% end %>
             </div>
         <% end %>
     <% end %>

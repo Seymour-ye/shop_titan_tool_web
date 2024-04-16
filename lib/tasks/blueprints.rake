@@ -125,7 +125,7 @@ namespace :blueprints do
         if comp
           new_comp[comp.component_id] = comp_attr
         elsif precraft
-          if precraft.category == 'Runestone' || precraft.category == 'Moonstone'
+          if precraft.category == 'runestone' || precraft.category == 'moonstone'
             new_comp['stone'] = comp_attr
             new_comp['stone'][:id] = precraft.blueprint_id
           else 
