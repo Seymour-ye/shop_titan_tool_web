@@ -5,6 +5,7 @@ namespace :general do
       Rake::Task["components:import"].invoke
       Rake::Task["blueprints:import"].invoke
       Rake::Task["blueprints:zh_update"].invoke
+      Rake::Task["blueprints:component_update"].invoke
       Rake::Task["data_collected:flash_quest"].invoke
       Rake::Task["data_collected:monthly_events"].invoke
       Rake::Task["data_collected:content_pass"].invoke

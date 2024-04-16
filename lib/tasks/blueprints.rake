@@ -52,16 +52,14 @@ namespace :blueprints do
       essence = cell_val('ai')
 
       components = {}
-      component = Component.find_by(name: cell_val('ak'))
-      component_name = component ? component.component_id : cell_val('ak')
+      component = cell_val('ak')
       quality = cell_val('al')
       amount = cell_val('am')
-      components[component_name] = {quality: quality, amount: amount} if component
-      component = Component.find_by(name: cell_val('an'))
-      component_name = component ? component.component_id : cell_val('an')
+      components[component] = {quality: quality, amount: amount} if component
+      component = cell_val('an')
       quality = cell_val('ao')
       amount = cell_val('ap')
-      components[component_name] = {quality: quality, amount: amount} if component
+      components[component] = {quality: quality, amount: amount} if component
 
       attack = cell_val('ar')
       defence = cell_val('as')
@@ -113,6 +111,30 @@ namespace :blueprints do
         blueprint.update(speedup_energy: cell_val('bv'))
         blueprint.update(released_date: cell_val('g'))
       end
+    end
+  end
+
+  desc "update the components information"
+  task component_update: :environment do 
+    Blueprint.all.each do |blueprint|
+      old_comp = blueprint.components 
+      new_comp = {}
+      old_comp.each do |comp_name, comp_attr|
+        comp = Component.find_by(name: comp_name)
+        precraft = Blueprint.find_by(name_en: comp_name)
+        if comp
+          new_comp[comp.component_id] = comp_attr
+        elsif precraft
+          if precraft.category == 'Runestone' || precraft.category == 'Moonstone'
+            new_comp['stone'] = comp_attr
+            new_comp['stone'][:id] = precraft.blueprint_id
+          else 
+            new_comp['precraft'] = comp_attr 
+            new_comp['precraft'][:id] = precraft.blueprint_id
+          end 
+        end
+      end
+      blueprint.update_attribute(:components, new_comp)
     end
   end
 
