@@ -413,7 +413,7 @@ $ rake tmp:cache:clear
 ```
 
 # TODO LIST
-- component filter: pre-crafts
+- adding item images for blueprint display
 - sort by: 
   - Worker Level: options: workers
   - Event: favor, airship power
@@ -451,4 +451,6 @@ $ rake tmp:cache:clear
 - add a switch/button for language change
   - remove locale scope
 - filter: components selection
+- component filter: pre-crafts and stones
+
 
