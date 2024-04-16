@@ -117,6 +117,6 @@ class BlueprintsController < ApplicationController
       @armors = ['heavy_armor', 'light_armor', 'clothes','helmet','rogue_hat', 'magician_hat', 'gauntlets', 'gloves', 'heavy_footwear','light_footwear']
       @other_categories = ['runestone', 'moonstone', 'element', 'spirit']
       @resources = ['iron', 'wood', 'leather', 'herbs', 'steel', 'ironwood', 'fabric', 'oil', 'jewels', 'ether', 'essence']
-      @components = Component.pluck(:component_id)
+      @components = Component.pluck(:component_id) << 'stone' << 'precraft'
     end
 end
