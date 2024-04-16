@@ -255,6 +255,27 @@ end
 ```
 **Note**: keep the `default_url_options` method, otherwise routes will not work properly.
 
+# Deploying
+1. Login
+```
+$ fly auth login
+```
+2. Launch a new app on fly.io
+```
+$ fly launch
+```
+3. Deploying updates
+```
+$ fly deploy
+```
+4. Useful commands
+```
+$ fly apps restart        # restart the app
+$ fly ssh console         # access to the console
+$ fly apps open           # open the root path of deployed app in browser
+```
+
+
 # Problems
 ## Whitespace above Navigation bar
 ### Description
@@ -377,6 +398,7 @@ config.action_view.preload_links_header = false
 **Note:** It works for now and might be needed in production as well, but don't know what will be affected yet.
 
 # TODO LIST
+- deloy the app on fly.io
 - blueprint view in index
 - sort by: favor, airship power, each resource, value, merchant_xp, etc...
 - display correct info about each blueprint in `_blueprint`
