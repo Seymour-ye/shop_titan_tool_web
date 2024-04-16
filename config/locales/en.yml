@@ -31,6 +31,7 @@ en:
   armor: "Armor"
   accessory: "Accessory"
   other: "Other"
+  sort_by: "Sort By"
 
   component:
     all_seeing_eye: "All-Seeing Eye"

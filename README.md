@@ -397,10 +397,29 @@ config.action_view.preload_links_header = false
 ```
 **Note:** It works for now and might be needed in production as well, but don't know what will be affected yet.
 
+## Assets Precompile
+### Description
+While trying to solve the fly.io asset problem, I tried to ran
+``` 
+$ rails assets:precompile
+```
+and this result in local asset changes won't apply unless I compile again
+### Solve
+As mentioned in [this link](https://stackoverflow.com/questions/12762939), rails will access to `public/assets` if exists.
+### Solution
+Remove contents in `public/assets` will solve this problem, which could be done by
+```
+$ rake tmp:cache:clear
+```
+
 # TODO LIST
+- component filter: pre-crafts
+- sort by: 
+  - Worker Level: options: workers
+  - Event: favor, airship power
+  - Operating: value, merchant_xp 
 - deloy the app on fly.io
 - blueprint view in index
-- sort by: favor, airship power, each resource, value, merchant_xp, etc...
 - display correct info about each blueprint in `_blueprint`
 - display all information about each blueprint in `blueprint#show`
 - Calendar: Boss Quest Refresh Count Down
