@@ -1,5 +1,6 @@
 <div id="<%= dom_id blueprint %>" class="blueprint">
 <h2><%= blueprint.name %></h1>
+<%= "T#{blueprint.tier} #{t "categories.#{blueprint.category}"}" %>
 <%= blueprint.blueprint_id %>
 <div class="resources_listing">
     <% @resources.each do |resource| %>
@@ -17,6 +18,7 @@
                 <% if component == 'stone' %>
                     <% comp = blueprint.components[component]['id'] %>
                     <%= image_tag "stones/#{comp}", Alt: comp %>
+                    <%= blueprint.components[component]['amount'].to_i %>
                 <% else %>
                     <%= image_tag "components/#{component}", Alt: component %>
                     <%= blueprint.components[component]['amount'].to_i %>
