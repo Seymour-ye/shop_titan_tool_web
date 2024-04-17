@@ -73,8 +73,8 @@ class BlueprintsController < ApplicationController
         filter[resource.to_sym] = nil
       end
     end
-    filter[:tier] = params["tier"] if params['tier'].present?
-    filter[:category] = params["category"] if params['category'].present?
+    filter[:tier] = params["tier"] 
+    filter[:category] = params["category"] 
 
     @blueprints = Blueprint.where(filter)
 
