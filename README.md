@@ -412,6 +412,46 @@ Remove contents in `public/assets` will solve this problem, which could be done 
 $ rake tmp:cache:clear
 ```
 
+## Fly deploy img not found
+### Description
+In homepage, with 
+```
+   <%= image_tag 'general/logo', alt: 'Game Icon' %>
+```
+will get route error 500
+and with 
+```
+   <%= image_tag '/general/logo', alt: 'Game Icon' %>
+
+```
+will get error 404.
+### Solve
+Tried to edit the image url with 
+```
+images/general/logo
+assets/images/general/logo
+/images/general/logo
+/assets/images/general/logo
+```
+and edit path for `fly.toml`:
+```
+[[statics]]
+  guest_path = "/rails/public/assets/images"
+  url_prefix = "/"
+```
+with vairous guest_path value, but none of them worked.
+### Solution
+ChatGPT had a suggestion on adding file extension to the image to ensure the file could be detected, and it solves the problem.
+i.e. change the following
+```
+   <%= image_tag 'general/logo', alt: 'Game Icon' %>
+```
+to 
+```
+   <%= image_tag 'general/logo.png', alt: 'Game Icon' %>
+```
+
+
 # TODO LIST
 - adding item images for blueprint display
 - sort by: 
