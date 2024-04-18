@@ -453,7 +453,6 @@ to
 
 
 # TODO LIST
-- check img extensions, update webp to pngs
 - add img extensions in all img tags, check:
   - blueprints:
     - _blueprint
@@ -505,5 +504,7 @@ to
   - remove locale scope
 - filter: components selection
 - component filter: pre-crafts and stones
+- check img extensions, update webp to pngs
+
 
 
