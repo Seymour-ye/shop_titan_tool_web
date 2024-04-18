@@ -10,12 +10,12 @@
         }, option, nil %>
         <%= form.label "#{filter_target}_#{option}" do %>
             <% if filter_name == 'tier' %>
-                <%= image_tag "general/tier_bg", alt:"tier#{option}" %>
+                <%= image_tag "general/tier_bg.png", alt:"tier#{option}" %>
                 <span class="text-overlay"><%= option %></span>
             <% elsif img_url == 'components' && option == 'stone' %>
-                <%= image_tag "stones/runestones", alt: 'stones' %>
+                <%= image_tag "stones/runestones.png", alt: 'stones' %>
             <% else %>
-                <%= image_tag "#{img_url}/#{option}", alt: "option" %>
+                <%= image_tag "#{img_url}/#{option}.png", alt: "option" %>
             <% end %>
         <% end %>
     <% end %>

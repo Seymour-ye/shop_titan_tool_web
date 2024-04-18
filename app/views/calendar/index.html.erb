@@ -5,7 +5,7 @@
       <div class="date"><%= date.day %></div>
       <% events.each do |event| %>
         <p>
-          <%= image_tag "#{event.icon_url}", alt: "event.rewards" %>
+          <%= image_tag event.img_url, alt: "event.rewards" %>
           <% if (event.category == 'flash_quest') %>
             <%= "#{ event.name } #{ t(event.category) }" %>
           <% else %>

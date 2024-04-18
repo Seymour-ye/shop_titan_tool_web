@@ -1,7 +1,7 @@
 class Blueprint < ApplicationRecord
 
     def name
-        if I18n.locale == :zh
+        if I18n.locale == :zh && self.name_zh != nil
             self.name_zh
         else
             self.name_en

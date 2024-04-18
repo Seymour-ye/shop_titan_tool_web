@@ -453,18 +453,6 @@ to
 
 
 # TODO LIST
-- add img extensions in all img tags, check:
-  - blueprints:
-    - _blueprint
-    - _filter_all_none
-    - _filter_container
-    - _filter
-    - _filter_update.turbo_stream
-    - _index
-  - calendar:
-    - index
-  - layouts:
-    - _navigation
 - adding item images for blueprint display
 - sort by: 
   - Worker Level: options: workers
@@ -504,7 +492,20 @@ to
   - remove locale scope
 - filter: components selection
 - component filter: pre-crafts and stones
-- check img extensions, update webp to pngs
+- check img extensions, update webps to pngs
+- Handling browser default locales that are not in I18n.available_locales
+- add img extensions in all img tags, check:
+  - blueprints:
+    - _blueprint
+    - _filter_all_none
+    - _filter_container
+    - _filter
+    - _filter_update.turbo_stream
+    - _index
+  - calendar:
+    - index
+  - layouts:
+    - _navigation
 
 
 

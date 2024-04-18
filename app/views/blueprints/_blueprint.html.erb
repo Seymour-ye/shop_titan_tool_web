@@ -7,7 +7,7 @@
         <% resource_val = blueprint.send(resource) %>
         <% if resource_val %>
             <div class="crafting_resource">
-                <%= image_tag "resources/#{resource}", Alt: resource %>
+                <%= image_tag "resources/#{resource}.png", Alt: resource %>
                 <%= resource_val %>
             </div>
         <% end %>
@@ -17,10 +17,10 @@
             <div class="crafting_resource">
                 <% if component == 'stone' %>
                     <% comp = blueprint.components[component]['id'] %>
-                    <%= image_tag "stones/#{comp}", Alt: comp %>
+                    <%= image_tag "stones/#{comp}.png", Alt: comp %>
                     <%= blueprint.components[component]['amount'].to_i %>
                 <% else %>
-                    <%= image_tag "components/#{component}", Alt: component %>
+                    <%= image_tag "components/#{component}.png", Alt: component %>
                     <%= blueprint.components[component]['amount'].to_i %>
                 <% end %>
             </div>
