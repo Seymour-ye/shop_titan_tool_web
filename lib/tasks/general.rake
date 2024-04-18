@@ -1,7 +1,8 @@
 namespace :general do
     desc "Run blueprints:import and blueprints:zh_update tasks"
     task :initialize_database do
-      Rake::Task["db:reset"].invoke
+      system('./bin/rails db:migrate VERSION=0')
+      Rake::Task["db:migrate"].invoke
       Rake::Task["components:import"].invoke
       Rake::Task["blueprints:import"].invoke
       Rake::Task["blueprints:zh_update"].invoke

@@ -1,7 +1,6 @@
 <div id="<%= dom_id blueprint %>" class="blueprint">
 <h2><%= blueprint.name %></h1>
 <%= "T#{blueprint.tier} #{t "categories.#{blueprint.category}"}" %>
-<%= blueprint.blueprint_id %>
 <div class="resources_listing">
     <% @resources.each do |resource| %>
         <% resource_val = blueprint.send(resource) %>

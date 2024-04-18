@@ -274,6 +274,19 @@ $ fly apps restart        # restart the app
 $ fly ssh console         # access to the console
 $ fly apps open           # open the root path of deployed app in browser
 ```
+5. Set up database
+Since Fly.io already created database for existing project automatically, all I need to do is migrate and import:
+```
+$ fly ssh console                             # access to fly console
+>> ./bin/rails db:migrate                     # migration
+>> ./bin/rake  general:initialize_database
+```
+6. Database commands
+```
+>> ./bin/rails db:migrate:reset             # clear database
+>> ./bin/rails db:rollback                  # undo 1 step of migration
+>> ./bin/rails db:migrate VERSION=0        # roll all the way back to beginning
+```
 
 
 # Problems
@@ -458,7 +471,6 @@ to
   - Worker Level: options: workers
   - Event: favor, airship power
   - Operating: value, merchant_xp 
-- deloy the app on fly.io
 - blueprint view in index
 - display correct info about each blueprint in `_blueprint`
 - display all information about each blueprint in `blueprint#show`
@@ -506,6 +518,9 @@ to
     - index
   - layouts:
     - _navigation
+- deloy the app on fly.io
+- set up database on fly.io
+
 
 
 
