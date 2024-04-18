@@ -453,6 +453,19 @@ to
 
 
 # TODO LIST
+- check img extensions, update webp to pngs
+- add img extensions in all img tags, check:
+  - blueprints:
+    - _blueprint
+    - _filter_all_none
+    - _filter_container
+    - _filter
+    - _filter_update.turbo_stream
+    - _index
+  - calendar:
+    - index
+  - layouts:
+    - _navigation
 - adding item images for blueprint display
 - sort by: 
   - Worker Level: options: workers
